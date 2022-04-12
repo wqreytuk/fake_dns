@@ -17,9 +17,7 @@ fake_dns.py -domain mother.fucker -fqdn WIN-HOUICG8C0VG.mother.fucker -ip 192.16
 set the dns server to 127.0.0.1
 
 and then everything is done:
-```
-VERBOSE: [Get-PrincipalContext] Binding to domain 'mother.fucker'
-VERBOSE: [Get-PrincipalContext] Using alternate credentials
-VERBOSE: [Set-DomainUserPassword] Attempting to set the password for user 'vscode1'
-VERBOSE: [Set-DomainUserPassword] Password for user 'vscode1' successfully reset
-```
+![image](https://user-images.githubusercontent.com/48377190/162989615-68beacc4-f101-42bc-a24c-1dc3d5fe9a4c.png)
+
+
+a side note, I set the TTL of the response to 5s in case you want to change the FQDN and IP, so the dns ccache won't bother you
