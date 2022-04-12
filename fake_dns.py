@@ -166,11 +166,11 @@ class DNSHandler(socketserver.BaseRequestHandler):
         record += b'\x00\x21'
         # the Class, 0x0001 for IN(internet)
         record += b'\x00\x01'
-        # then TTL, just set it to 600
-        record += b'\x00\x00\x02\x58'
+        # then TTL, just set it to 5s
+        record += b'\x00\x00\x00\x05'
         # then Data Length, this is the desired DC FQDN length + 4
         # the additional 4 bytes is occupied by Priority(2) and Weight(2)
-        record += b'\x00\x25'  # which is 37 len(WIN-BTAP0QG1S13.mother.fucker) + 4
+        record += (len(g_server_fqdn) + 4).to_bytes(2, 'big')
         # then Priority, set it to 0
         record += b'\x00\x00'
         # then Weight, set it to 100
@@ -208,13 +208,13 @@ class DNSHandler(socketserver.BaseRequestHandler):
         record += b'\x00\x01'
         # the Class, 0x0001 for IN(internet)
         record += b'\x00\x01'
-        # then TTL, just set it to 600
-        record += b'\x00\x00\x02\x58'
+        # then TTL, just set it to 5s
+        record += b'\x00\x00\x00\x05'
         # then Data Length, IP length, for IPV4, will always be 4 byte
         record += b'\x00\x04'
         # finally, the IP of the DC(ldap server)
         for num in g_server_ip.split('.'):
-            record += int(num).to_bytes(2, 'big')
+            record += int(num).to_bytes(1, 'big')
         print("A response generated for " + g_server_ip)
         return record
 
