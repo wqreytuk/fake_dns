@@ -14,6 +14,8 @@ fire the fake dns server up:
 fake_dns.py -domain mother.fucker -fqdn WIN-HOUICG8C0VG.mother.fucker -ip 192.168.64.129
 ```
 
+set the dns server to 127.0.0.1
+
 and then everything is done:
 ```
 VERBOSE: [Get-PrincipalContext] Binding to domain 'mother.fucker'
