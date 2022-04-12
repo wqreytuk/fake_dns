@@ -36,7 +36,7 @@ class DNSHandler(socketserver.BaseRequestHandler):
         for question in all_questions:
             name = str(b'.'.join(question['name']), encoding='UTF-8')
             print(name)
-            if g_target_domain not in name or '_ldap' not in name and g_server_fqdn not in name:
+            if g_target_domain not in name and '_ldap' not in name and '_kerberos' not in name and g_server_fqdn not in name:
                 continue
             print("[*] query type:\n\t" + query_type[question['qtype']])
             print("[*] query name:\n\t" + name)
